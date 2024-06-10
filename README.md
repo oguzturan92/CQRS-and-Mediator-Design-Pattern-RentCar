@@ -4,6 +4,9 @@
 - CodeFirst yaklaşımı ile geliştirildi.
 - Kullanılan tasarım desenlerine veri göndererek filtreleme sonucunun nasıl işleneceği işlendi.
 
+# Filtrelemenin Yapıldığı Desen ve Nasıl Yapıldığı Bilgisi Resimde Yorum Satırı Olarak Mevcut
+![Ekran görüntüsü 2024-06-10 221617](https://github.com/oguzturan92/CQRS-and-Mediator-Design-Pattern-RentCar/assets/157590022/a13b42c0-887a-4156-a330-5200979f23ec)
+
 # Admin Paneli Araç Listesi
 ![Ekran görüntüsü 2024-06-10 220634](https://github.com/oguzturan92/CQRS-and-Mediator-Design-Pattern-RentCar/assets/157590022/1f32a11d-f999-4f40-9cdc-7dbd838d5a8d)
 
@@ -13,5 +16,6 @@
 # Filtrelenen Sonuçlar ve Detay Bilgilerine Modal İle Ulaşım
 ![Ekran görüntüsü 2024-06-10 221029](https://github.com/oguzturan92/CQRS-and-Mediator-Design-Pattern-RentCar/assets/157590022/f8741e2c-244f-471e-87d0-515700d3fb36)
 
-# Filtrelemenin Yapıldığı Desen ve Nasıl Yapıldığı Bilgisi Resimde Yorum Satırı Olarak Mevcut
-![Ekran görüntüsü 2024-06-10 221617](https://github.com/oguzturan92/CQRS-and-Mediator-Design-Pattern-RentCar/assets/157590022/a13b42c0-887a-4156-a330-5200979f23ec)
+# Sonuç Bulunmayan Arama Sonucunda Tekrar Arama Formunun Gösterilmesi
+![Ekran görüntüsü 2024-06-10 223158](https://github.com/oguzturan92/CQRS-and-Mediator-Design-Pattern-RentCar/assets/157590022/a4b105a7-5929-4bbb-8f90-ce7b3f780a4f)
+
