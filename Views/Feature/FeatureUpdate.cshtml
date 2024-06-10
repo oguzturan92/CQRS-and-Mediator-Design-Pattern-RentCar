@@ -1,0 +1,19 @@
+@model GetFeatureByIdQueryResult
+@{
+    ViewData["Title"] = "Özellik Güncelle";
+    Layout = "_LayoutAdmin";
+}
+
+<div class="container border p-3">
+    <h3>Özellik Güncelle</h3>
+    <form asp-controller="Feature" asp-action="FeatureUpdate" method="post">
+        <input type="hidden" asp-for="CarId">
+        <input type="hidden" asp-for="FeatureId">
+        <div class="form-group">
+            <label for="FeatureName">Özellik Adı</label>
+            <input type="text" asp-for="FeatureName" id="FeatureName" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-success">Kaydet</button>
+        <a asp-controller="Feature" asp-action="FeatureList" asp-route-carId="@Model.CarId" class="btn btn-light ml-2">Geri</a>
+    </form>
+</div>

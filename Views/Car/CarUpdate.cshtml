@@ -1,0 +1,88 @@
+@model GetCarByIdQueryResult
+@{
+    ViewData["Title"] = "Araç Güncelle";
+    Layout = "_LayoutAdmin";
+}
+
+<div class="container border p-3">
+    <h3>Araç Güncelle</h3>
+    <form asp-controller="Car" asp-action="CarUpdate" method="post">
+        <input type="hidden" asp-for="CarId">
+        <div class="form-group">
+            <label for="CarName">Araç Adı</label>
+            <input type="text" asp-for="CarName" id="CarName" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="CarImage">Araç Resim</label>
+            <input type="text" asp-for="CarImage" id="CarImage" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="CarDescription">Araç Açıklaması</label>
+            <input type="text" asp-for="CarDescription" id="CarDescription" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="CarDayPrice">Fiyat / Gün</label>
+            <input type="text" asp-for="CarDayPrice" id="CarDayPrice" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="CarLuggage">Bagaj / Litre</label>
+            <input type="text" asp-for="CarLuggage" id="CarLuggage" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="CarDoor">Kapı Sayısı</label>
+            <input type="text" asp-for="CarDoor" id="CarDoor" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="CarPessenger">Kişi Kapasitesi</label>
+            <input type="text" asp-for="CarPessenger" id="CarPessenger" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="CarFuelType">Yakıt Tipi</label>
+            <select asp-for="CarFuelType" id="CarFuelType" class="form-control">
+                <option value="Benzin">Benzin</option>
+                <option value="Dizel">Dizel</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="FeatureAutomaticTransmission">Vites Özelliği</label>
+            <select asp-for="FeatureAutomaticTransmission" id="FeatureAutomaticTransmission" class="form-control">
+                <option value="Otomatik">Otomatik</option>
+                <option value="Manuel">Manuel</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="CarInProvince">Bulunduğu İl</label>
+            <select asp-for="CarInProvince" id="CarInProvince" class="form-control">
+                <option disabled selected>Seçiniz</option>
+                <option value="Ankara">Ankara</option>
+                <option value="İstanbul">İstanbul</option>
+                <option value="İzmir">İzmir</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="CarRentStartDate">Rezervasyon Başlangıç Tarihi</label>
+            <input type="date" asp-for="CarRentStartDate" id="CarRentStartDate" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="CarRentFinishDate">Rezervasyon Bitiş Tarihi</label>
+            <input type="date" asp-for="CarRentFinishDate" id="CarRentFinishDate" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="BrandId">Marka</label>
+            <select asp-for="BrandId" id="BrandId" class="form-control">
+                @foreach (var item in ViewBag.brands)
+                {
+                    if (Model.BrandId == item.BrandId)
+                    {
+                        <option value="@item.BrandId" selected>@item.BrandName</option>
+                    } else
+                    {
+                        <option value="@item.BrandId">@item.BrandName</option>
+                    }
+                }
+            </select>
+        </div>
+        <button type="submit" class="btn btn-success">Kaydet</button>
+        <a asp-controller="Car" asp-action="CarList" class="btn btn-light ml-2">Geri</a>
+    </form>
+</div>

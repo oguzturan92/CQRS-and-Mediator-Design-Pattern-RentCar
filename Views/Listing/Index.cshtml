@@ -1,0 +1,151 @@
+@model List<GetCarFilterQueryResult>
+@{
+    ViewData["Title"] = "Araç Listesi";
+    Layout = "_Layout";
+    int count = 0;
+}
+
+<div class="hero inner-page" style="background-image: url('/thema/images/hero_1_a.jpg');">
+    <div class="container">
+        <div class="row align-items-end ">
+            <div class="col-lg-5">
+                <div class="intro">
+                    <h1><strong>Araç Listesi</strong></h1>
+                    <div class="custom-breadcrumbs"><a asp-controller="Home" asp-action="Index">Ana Sayfa</a> <span class="mx-2">/</span> <strong>Araç Listesi</strong></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="site-section bg-light">
+    <div class="container">
+
+        @if (Model.Count() > 0)
+        {
+            <div class="row">
+                <div class="col-lg-7">
+                    <h2 class="section-heading"><strong>Arama Sonuçlarınız</strong></h2>
+                    <p class="mb-5">Müsait Olan Araçlarımız Listelenmektedir</p>    
+                </div>
+            </div>
+            <div class="row">
+                
+                @foreach (var item in Model)
+                {
+                    count++;
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="listing d-block  align-items-stretch">
+                            <div class="listing-img h-100 mr-4">
+                                <img src="@item.CarImage" alt="Image" class="img-fluid" style="height: 200px; object-fit: cover;">
+                            </div>
+                            <div class="listing-contents h-100">
+                                <h3>@item.CarName</h3>
+                                <div class="rent-price">
+                                    <strong>@item.CarDayPrice ₺</strong><span class="mx-1">/</span>gün
+                                </div>
+                                <div class="d-flex justify-content-between d-md-flex mb-3 border-bottom pb-3">
+                                    <div class="listing-feature">
+                                        <span class="caption" style="font-weight: 400;">Bagaj:</span>
+                                        <span class="number">@item.CarLuggage litre</span>
+                                    </div>
+                                    <div class="listing-feature">
+                                        <span class="caption" style="font-weight: 400;">Kapı Sayısı:</span>
+                                        <span class="number">@item.CarDoor</span>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between d-md-flex mb-3 border-bottom pb-3">
+                                    <div class="listing-feature">
+                                        <span class="caption" style="font-weight: 400;">Yolcu Kapasitesi:</span>
+                                        <span class="number">@item.CarPessenger</span>
+                                    </div>
+                                    <div class="listing-feature">
+                                        <span class="caption" style="font-weight: 400;">Vites:</span>
+                                        <span class="number">@item.FeatureAutomaticTransmission</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p>@item.CarDescription</p>
+                                    <p><a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModalCenter@(count)">İncele</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModalCenter@(count)" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">@item.CarName</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="listing-img h-100">
+                                        <img src="@item.CarImage" alt="Image" class="img-fluid" style="width: 100%; object-fit: cover;">
+                                    </div>
+                                    <div class="listing-contents h-100">
+                                        <h3 style="font-weight: 500;">@item.CarName</h3>
+                                        <div class="rent-price">
+                                            <strong>@item.CarDayPrice ₺</strong><span class="mx-1">/</span>gün
+                                        </div>
+                                        <div class="d-flex justify-content-between d-md-flex mb-3 border-bottom pb-3">
+                                            <div class="listing-feature">
+                                                <span class="caption" style="font-weight: 400;">Bagaj : </span>
+                                                <span class="number">@item.CarLuggage litre</span>
+                                            </div>
+                                            <div class="listing-feature">
+                                                <span class="caption" style="font-weight: 400;">Kapı Sayısı : </span>
+                                                <span class="number">@item.CarDoor</span>
+                                            </div>
+                                            <div class="listing-feature">
+                                                <span class="caption" style="font-weight: 400;">Yolcu Kapasitesi : </span>
+                                                <span class="number">@item.CarPessenger</span>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-between d-md-flex mb-3 border-bottom pb-3">
+                                            <div class="listing-feature">
+                                                <span class="caption" style="font-weight: 400;">Vites : </span>
+                                                <span class="number">@item.FeatureAutomaticTransmission</span>
+                                            </div>
+                                            <div class="listing-feature">
+                                                <span class="caption" style="font-weight: 400;">Yakıt : </span>
+                                                <span class="number">@item.CarFuelType</span>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <span class="caption" style="font-weight: 400;">Diğer Özellikler</span>
+                                            <ul>
+                                                @foreach (var item2 in item.Features)
+                                                {
+                                                    <li>@item2.FeatureName</li>
+                                                }
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                
+            </div>
+        } else
+        {
+            @if (ViewBag.search)
+            {
+                <div class="alert alert-primary" role="alert">
+                    Aradığınız kriterlere ait sonuç bulunamadı. Müsait araçları görüntülemek için lütfen arama yapınız.
+                </div>
+            }
+
+            @await Component.InvokeAsync("SearchForm")
+        }
+
+    </div>
+</div>

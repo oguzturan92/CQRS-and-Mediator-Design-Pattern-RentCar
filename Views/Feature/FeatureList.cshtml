@@ -1,0 +1,40 @@
+@model List<GetFeatureByCarIdQueryResult>
+@{
+    ViewData["Title"] = "Özellik Listesi";
+    Layout = "_LayoutAdmin";
+    int count = 0;
+}
+
+<div class="container border p-3">
+    <h3>Özellik Listesi</h3>
+    @if (Model.Count() > 0)
+    {
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Özellik</th>
+                    <th colspan="2"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    count++;
+                    <tr>
+                        <td>@count</td>
+                        <td>@item.FeatureName</td>
+                        <td><a class="btn btn-warning" asp-controller="Feature" asp-action="FeatureUpdate" asp-route-id="@item.FeatureId">Düzenle</a></td>
+                        <td><a class="btn btn-danger" asp-controller="Feature" asp-action="FeatureRemove" asp-route-id="@item.FeatureId" asp-route-carId="@ViewBag.carId">Sil</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    } else
+    {
+        <div class="alert alert-info" role="alert">
+            Kayıtlı özellik bulunmuyor.
+        </div>
+    }
+    <a asp-controller="Feature" asp-action="FeatureCreate" asp-route-carId="@ViewBag.carId" class="btn btn-info">Yeni Özellik Ekle</a>
+</div>

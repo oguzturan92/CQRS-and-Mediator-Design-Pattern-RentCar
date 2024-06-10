@@ -1,0 +1,18 @@
+@model GetBrandByIdQueryResult
+@{
+    ViewData["Title"] = "Marka Güncelle";
+    Layout = "_LayoutAdmin";
+}
+
+<div class="container border p-3">
+    <h3>Marka Güncelle</h3>
+    <form asp-controller="Brand" asp-action="BrandUpdate" method="post">
+        <input type="hidden" asp-for="BrandId">
+        <div class="form-group">
+            <label for="BrandName">Marka Adı</label>
+            <input type="text" asp-for="BrandName" id="BrandName" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-success">Kaydet</button>
+        <a asp-controller="Brand" asp-action="BrandList" class="btn btn-light ml-2">Geri</a>
+    </form>
+</div>

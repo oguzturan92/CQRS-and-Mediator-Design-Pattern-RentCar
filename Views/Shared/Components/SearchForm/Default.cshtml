@@ -1,0 +1,39 @@
+
+<form class="trip-form" asp-controller="Listing" asp-action="Index">
+    <div class="row align-items-center">
+        <input type="hidden" name="search" value="true">
+        <div class="mb-3 mb-md-0 col-md-3">
+            <label>Alış Şehiri</label>
+            <select name="startCity" id="" class="custom-select form-control" required>
+                <option selected disabled>Seçiniz</option>
+                <option value="Ankara">Ankara</option>
+                <option value="İstanbul">İstanbul</option>
+                <option value="İzmir">İzmir</option>
+            </select>
+        </div>
+        <div class="mb-3 mb-md-0 col-md-3">
+            <label>Teslim Şehiri</label>
+            <select name="finishCity" id="" class="custom-select form-control" required>
+                <option selected disabled>Seçiniz</option>
+                <option value="Ankara">Ankara</option>
+                <option value="İstanbul">İstanbul</option>
+                <option value="İzmir">İzmir</option>
+            </select>
+        </div>
+        <div class="mb-3 mb-md-0 col-md-3">
+            <div class="form-control-wrap">
+                <label>Alış Tarihi</label>
+                <input type="date" name="startDate" id="cf-3" class="form-control datepicker px-3" required>
+            </div>
+        </div>
+        <div class="mb-3 mb-md-0 col-md-3">
+            <div class="form-control-wrap">
+                <label>Teslim Tarihi</label>
+                <input type="date" name="finishDate" id="cf-4" class="form-control datepicker px-3" required>
+            </div>
+        </div>
+        <div class="mb-12 mb-md-0 col-md-12 mt-3">
+            <input type="submit" value="Ara" class="btn btn-primary btn-block py-3">
+        </div>
+    </div>
+</form>

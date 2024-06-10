@@ -1,0 +1,17 @@
+@model CreateBrandCommand
+@{
+    ViewData["Title"] = "Marka Ekle";
+    Layout = "_LayoutAdmin";
+}
+
+<div class="container border p-3">
+    <h3>Yeni Marka Ekle</h3>
+    <form asp-controller="Brand" asp-action="BrandCreate" method="post">
+        <div class="form-group">
+            <label for="BrandName">Marka Adı</label>
+            <input type="text" asp-for="BrandName" id="BrandName" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-success">Kaydet</button>
+        <a asp-controller="Brand" asp-action="BrandList" class="btn btn-light ml-2">Geri</a>
+    </form>
+</div>

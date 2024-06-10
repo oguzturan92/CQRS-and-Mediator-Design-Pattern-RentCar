@@ -1,0 +1,18 @@
+@model CreateFeatureCommand
+@{
+    ViewData["Title"] = "Özellik Ekle";
+    Layout = "_LayoutAdmin";
+}
+
+<div class="container border p-3">
+    <h3>Yeni Özellik Ekle</h3>
+    <form asp-controller="Feature" asp-action="FeatureCreate" method="post">
+        <input type="hidden" name="CarId" value="@ViewBag.carId">
+        <div class="form-group">
+            <label for="FeatureName">Özellik Adı</label>
+            <input type="text" asp-for="FeatureName" id="FeatureName" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-success">Kaydet</button>
+        <a asp-controller="Feature" asp-action="FeatureList" asp-route-carId="@ViewBag.carId" class="btn btn-light ml-2">Geri</a>
+    </form>
+</div>

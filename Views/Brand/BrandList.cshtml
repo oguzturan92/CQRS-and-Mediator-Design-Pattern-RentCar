@@ -1,0 +1,40 @@
+@model List<GetBrandQueryResult>
+@{
+    ViewData["Title"] = "Marka Listesi";
+    Layout = "_LayoutAdmin";
+    int count = 0;
+}
+
+<div class="container border p-3">
+    <h3>Marka Listesi</h3>
+    @if (Model.Count() > 0)
+    {
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Marka Adı</th>
+                    <th colspan="2"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    count++;
+                    <tr>
+                        <td>@count</td>
+                        <td>@item.BrandName</td>
+                        <td><a class="btn btn-warning" asp-controller="Brand" asp-action="BrandUpdate" asp-route-id="@item.BrandId">Düzenle</a></td>
+                        <td><a class="btn btn-danger" asp-controller="Brand" asp-action="BrandRemove" asp-route-id="@item.BrandId">Sil</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    } else
+    {
+        <div class="alert alert-info" role="alert">
+            Kayıtlı marka bulunmuyor.
+        </div>
+    }
+    <a asp-controller="Brand" asp-action="BrandCreate" class="btn btn-info">Yeni Marka Ekle</a>
+</div>
